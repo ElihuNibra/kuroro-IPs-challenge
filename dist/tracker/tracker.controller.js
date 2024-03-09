@@ -17,7 +17,15 @@ let TrackerController = class TrackerController {
         this.trackerService = trackerService;
     }
     async batchWriteToDB() {
-        this.trackerService.batchWriteToDB();
+        try {
+            await this.trackerService.batchWriteToDB();
+            console.log('DataSavedLocally');
+            return { message: 'Data saved locally successfully' };
+        }
+        catch (error) {
+            console.error('Error saving data locally:', error);
+            return { error: 'Internal Server Error' };
+        }
     }
 };
 exports.TrackerController = TrackerController;
