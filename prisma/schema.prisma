@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Tracked {
+model tracked {
   id       Int      @id @default(autoincrement())
   userId   String
   ipAddress String
