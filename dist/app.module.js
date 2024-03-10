@@ -14,12 +14,18 @@ const core_1 = require("@nestjs/core");
 const tracker_service_1 = require("./tracker/tracker.service");
 const prisma_service_1 = require("./Prisma/prisma.service");
 const timer_service_1 = require("./timer/timer.service");
+const tracker_module_1 = require("./tracker/tracker.module");
 let AppModule = class AppModule {
+    configure(consumer) {
+        consumer
+            .apply(tracker_middleware_1.TrackingMiddleware)
+            .forRoutes({ path: '*', method: common_1.RequestMethod.ALL });
+    }
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [schedule_1.ScheduleModule.forRoot()],
+        imports: [schedule_1.ScheduleModule.forRoot(), tracker_module_1.TrackerModule],
         providers: [
             {
                 provide: core_1.APP_INTERCEPTOR,

@@ -1,6 +1,6 @@
 import { TrackerService } from './tracker.service';
 export declare class TrackerController {
-    private readonly trackerService;
+    private trackerService;
     constructor(trackerService: TrackerService);
     batchWriteToDB(): Promise<{
         message: string;

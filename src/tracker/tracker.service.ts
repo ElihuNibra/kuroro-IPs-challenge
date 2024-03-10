@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/Prisma/prisma.service';
 @Injectable()
 export class TrackerService {
-  private readonly userData = [];
+  private userData = [];
   constructor(private prisma: PrismaService) {}
   saveData(userId: string, userIp: string) {
     this.userData.push({ userId, userIp });
